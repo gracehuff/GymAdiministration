@@ -1,6 +1,6 @@
 public class Administrator extends PersonalCommonInformation{
 
-    private String administratorAccessKey;
+    public String administratorAccessKey;
 
     public String getAdministratorAccessKey() {
         return administratorAccessKey;

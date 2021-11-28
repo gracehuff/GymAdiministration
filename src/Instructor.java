@@ -1,6 +1,11 @@
+import java.util.ArrayList;
+
 public class Instructor extends  PersonalCommonInformation{
 
-    private String instructorAccessKey;
+    public ArrayList<Client> clients;
+    public String instructorAccessKey;
+
+
 
     public String getInstructorAccessKey(){
         return instructorAccessKey;
@@ -10,5 +15,7 @@ public class Instructor extends  PersonalCommonInformation{
         this.instructorAccessKey = instructorAccessKey;
     }
 
+    public ArrayList<Client> getClients() {return clients;}
 
+    public void setClients(ArrayList<Client> clients) {this.clients = clients;}
 }
