@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Address {
@@ -7,8 +8,60 @@ public class Address {
     public String state;
     public String postalCode;
 
-    public static void main(String[] args) {
-        Address.setAndShowData();
+    public static void main(String[] args) throws Exception {
+        Address newAddress = new Address();
+        newAddress.setStreet("rua José");
+        newAddress.setNumber(12);
+        newAddress.setCity("charqueadas");
+        newAddress.setPostalCode("9770001");
+        newAddress.setState("RS");
+        ArrayList<Address> addresses = new ArrayList<Address>();
+        addresses.add(newAddress);
+        addresses.add(registryAddress("rua Josefina", 10, "Charqueadas",
+                        "RS", "96770001"));
+        searchAddressByStreetAndNumber(addresses,"rua José", 12);
+        deleteAddressByStreetAndNumber(addresses,"rua Josefina", 10);
+    }
+
+    public static Address registryAddress(String street, Integer number, String city, String state, String postalCode) throws Exception {
+        if (street.isBlank() || number == null || city.isBlank() || postalCode.isBlank() || state.isBlank()) {
+            throw new Exception("All address information is required, please check and try again.");
+        }
+        Address newAddress = new Address();
+        newAddress.street = street;
+        newAddress.number = number;
+        newAddress.city = city;
+        newAddress.postalCode = postalCode;
+        newAddress.state = state;
+        return newAddress;
+    }
+
+    public static Address searchAddressByStreetAndNumber(ArrayList<Address> addressInformations, String street, Integer number) throws Exception {
+        for (int i = 0; i < addressInformations.size(); i++) {
+            if (addressInformations.get(i).street.equals(street) && addressInformations.get(i).number.equals(number)) {
+                System.out.println("Address found: "
+                        + addressInformations.get(i).street
+                        + " "
+                        + addressInformations.get(i).number
+                        + " "
+                        + addressInformations.get(i).city
+                        + " "
+                        + addressInformations.get(i).postalCode
+                        + " "
+                        + addressInformations.get(i).state);
+                return addressInformations.get(i);
+            }
+        }
+        throw new Exception("Information not found for this Street and Number.");
+    }
+
+    public static void deleteAddressByStreetAndNumber(ArrayList<Address> addressInformations, String street, Integer number) throws Exception {
+        for (int i = 0; i < addressInformations.size(); i++) {
+            if (addressInformations.get(i).street.equals(street) && addressInformations.get(i).number.equals(number)) {
+                 addressInformations.remove(i);
+                System.out.println("Address deleted successfully.");
+            }
+        }
     }
 
     public static void setAndShowData() {

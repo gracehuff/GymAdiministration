@@ -7,8 +7,29 @@ public class Client extends PersonalCommonInformation{
     public Long selectedDaysPerWeek;
     public String selectedInstructor;
 
-    public static void main(String[] args) {
-        Client.setAndShowData();
+    public static void main(String[] args) throws Exception {
+        registerClient("Musculação", 3L, "Livre", 5L, "José");
+    }
+
+    public static void registerClient(String selectedPlan, Long dueDay, String workoutPlan, Long selectedDaysPerWeek, String selectedInstructor) throws Exception {
+        Client newClient = new Client();
+        if(selectedPlan.isBlank()){
+            throw new Exception("The client needs a Plan.");
+        }
+        if (dueDay >= 32L || dueDay == null || dueDay <= 0){
+            throw new Exception(" Due date needs to be between 01 and 31.");
+        }
+        if (selectedDaysPerWeek >= 7 || selectedDaysPerWeek == null || selectedDaysPerWeek <= 0) {
+            throw new Exception("The client needs to choose between 01 and 06 days.");
+        }
+        if (selectedInstructor.isBlank()){
+            throw new Exception("The client needs an Instructor.");
+        }
+        newClient.selectedPlan = selectedPlan;
+        newClient.dueDay = dueDay;
+        newClient.workoutPlan = workoutPlan;
+        newClient.selectedDaysPerWeek = selectedDaysPerWeek;
+        newClient.selectedInstructor = selectedInstructor;
     }
 
     public static void setAndShowData() {
