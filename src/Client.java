@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Client extends PersonalCommonInformation{
@@ -8,10 +9,12 @@ public class Client extends PersonalCommonInformation{
     public String selectedInstructor;
 
     public static void main(String[] args) throws Exception {
-        registerClient("Musculação", 3L, "Livre", 5L, "José");
+        ArrayList<Client> clients = new ArrayList<>();
+        clients.add(registerClient("Musculação", 3L, "Livre", 5L, "José"));
+
     }
 
-    public static void registerClient(String selectedPlan, Long dueDay, String workoutPlan, Long selectedDaysPerWeek, String selectedInstructor) throws Exception {
+    public static Client registerClient(String selectedPlan, Long dueDay, String workoutPlan, Long selectedDaysPerWeek, String selectedInstructor) throws Exception {
         Client newClient = new Client();
         if(selectedPlan.isBlank()){
             throw new Exception("The client needs a Plan.");
@@ -30,6 +33,8 @@ public class Client extends PersonalCommonInformation{
         newClient.workoutPlan = workoutPlan;
         newClient.selectedDaysPerWeek = selectedDaysPerWeek;
         newClient.selectedInstructor = selectedInstructor;
+        System.out.println("Client added successfully.");
+        return newClient;
     }
 
     public static void setAndShowData() {

@@ -32,14 +32,6 @@ public class Gym {
         this.email = email;
     }
 
-    public void registerGymLocation(Address gymLocation){
-        this.gymLocation.street = gymLocation.street;
-        this.gymLocation.number = gymLocation.number;
-        this.gymLocation.city = gymLocation.city;
-        this.gymLocation.postalCode = gymLocation.postalCode;
-        this.gymLocation.state = gymLocation.state;
-    }
-
     public void registerGymInstructors (String instructorName) {
         this.instructors.add(instructorName);
     }
