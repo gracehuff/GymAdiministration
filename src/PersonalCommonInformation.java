@@ -2,9 +2,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PersonalCommonInformation {
-    private String cpf;
-    private String nome;
-    private String rg;
+    public String cpf;
+    public String nome;
+    public String rg;
     public String birthdayDate;
     public String email;
     public String phoneNumber;
@@ -21,14 +21,13 @@ public class PersonalCommonInformation {
         ArrayList<PersonalCommonInformation> information = new ArrayList<PersonalCommonInformation>();
         information.add(newPersonalInformation);
 
-        information.add(registerPersonalInformation("03161176218", "11218278", "Pedro", "11/11/1111",
-                "pedro@pedro.com", "5199999"));
+        information.add(registerPersonalInformation());
         searchInformationByCPF(information, "03161176218");
         deletePersonalCommonInformationByCpf(information, "03161176218");
 
     }
 
-    public static PersonalCommonInformation registerPersonalInformation(String cpf, String rg, String nome, String birthdayDate, String email, String phoneNumber) throws Exception {
+    public static PersonalCommonInformation registerPersonalInformation() throws Exception {
         Scanner readData = new Scanner(System.in);
         PersonalCommonInformation newInformation = new PersonalCommonInformation();
         newInformation.cpf = readData.next();
